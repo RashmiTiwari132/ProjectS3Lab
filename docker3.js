@@ -24,10 +24,11 @@ var initiallize_docker3 = function(pUserId){
 	
 	initiallizeuserid_docker3(pUserId);
 	initiallizeRunCommand_docker3(userId_docker3);
+	console.log('Inside run_docker3 '+runcommand_docker3);
 }
 
 var run_docker3 = function(){
-	console.log('Inside run_docker3 '+runcommand_docker3);
+	//console.log('Inside run_docker3 '+runcommand_docker3);
 	exec(runcommand_docker3, (error, stdout, stderr)=>{
 		if(error != null){
 			console.error('error '+stderr);
@@ -38,12 +39,17 @@ var run_docker3 = function(){
 	});
 }
 
-var start_docker3 = function(pUserId){
+var start = function(pUserId){
 	initiallize_docker3(pUserId);
 	run_docker3();
+	console.log("Finished execution12345");
+}
+
+var start_docker3 = function(pUserId){
+	start(pUserId);
 }
 
 module.exports.start_docker3 = start_docker3;
-module.exports.run_docker3 = run_docker3;
-module.exports.initiallize_docker3 = initiallize_docker3;
-module.exports.initiallizeRunCommand_docker3 = initiallizeRunCommand_docker3;
+//module.exports.run_docker3 = run_docker3;
+//module.exports.initiallize_docker3 = initiallize_docker3;
+//module.exports.initiallizeRunCommand_docker3 = initiallizeRunCommand_docker3;
