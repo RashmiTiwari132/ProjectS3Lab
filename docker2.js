@@ -21,23 +21,24 @@ var InitiallizeAll = function(Ouserid){
 	InitiallizeBuild(Ouserid);
 }
 
-var RunBuildCommand = function(){
+var RunBuildCommand = function(OUserid){
 	exec(buildCommand, (error, stdout, stderr)=>{
 		if(error != null){
 			console.error('error '+stderr);
 			return;
+		}else{
+			console.log('success');
+			console.log(stdout);
+			Odocker3.start_docker3(OUserid);
 		}
-		console.log('success');
-		console.log(stdout);
 	});
 }
 
-var start = function(Ouserid){
-	InitiallizeAll(Ouserid);
-	RunBuildCommand();
-	console.log("Before starting docker3's execution");
-	Odocker3.start_docker3(Ouserid);
+var start = function(OUserid){
+	InitiallizeAll(OUserid);
+	RunBuildCommand(OUserid);
 }
+	
 
 var start_docker2 = function(Ouserid){
 	start(Ouserid);
